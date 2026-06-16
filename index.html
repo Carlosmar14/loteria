@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ========== TODOS TUS ESTILOS ORIGINALES (SE MANTIENEN) ========== */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -35,93 +36,173 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
             min-height: 100vh;
             color: var(--light);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
         }
         .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
         .bg-animation span { position: absolute; display: block; width: 20px; height: 20px; background: rgba(99, 102, 241, 0.1); animation: float 20s infinite linear; border-radius: 50%; }
         @keyframes float { 0%,100% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; } }
         .container { max-width: 1600px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
-        header { text-align: center; margin-bottom: 40px; padding: 40px 20px; background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; position: relative; overflow: hidden; }
+        header { text-align: center; margin-bottom: 40px; padding: 40px 20px; background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; position: relative; overflow: hidden; }
         header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite; }
         @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.8; } }
-        h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; letter-spacing: -0.02em; }
-        .subtitle { font-size: 1.1rem; color: var(--gray-light); max-width: 600px; margin: 0 auto; }
-        .badge-container { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-        .badge { background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 6px 18px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow-lg); transition: transform 0.2s; }
+        h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; text-shadow: 0 0 30px rgba(99, 102, 241, 0.5); }
+        .subtitle { font-size: 1.2rem; color: var(--gray-light); max-width: 600px; margin: 0 auto; }
+        .badge-container { display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-lg); transition: transform 0.3s, box-shadow 0.3s; }
         .badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
         .main-content { display: grid; grid-template-columns: 380px 1fr; gap: 30px; margin-bottom: 40px; }
-        @media (max-width: 1100px) { .main-content { grid-template-columns: 1fr; } }
-        .card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-xl); transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4); }
-        .card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: var(--white); padding-bottom: 12px; border-bottom: 2px solid rgba(99, 102, 241, 0.4); }
-        .card h2 i { background: linear-gradient(135deg, var(--primary), var(--secondary)); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1rem; }
-        .form-group { margin-bottom: 22px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--gray-light); font-size: 0.85rem; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        select, input { width: 100%; padding: 12px 16px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(99, 102, 241, 0.25); border-radius: 16px; font-size: 1rem; color: var(--white); transition: all 0.2s; }
-        select:focus, input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); background: rgba(15, 23, 42, 0.9); }
-        .single-number-input input { text-align: center; font-weight: 800; font-size: 1.8rem; padding: 16px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2)); }
-        .btn { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; border: none; padding: 14px 22px; border-radius: 16px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5); }
-        .btn-clear { background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); }
-        .btn-secondary { background: linear-gradient(135deg, var(--success) 0%, #047857 100%); }
-        .week-selector { display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.5); padding: 6px; border-radius: 60px; margin-bottom: 25px; border: 1px solid rgba(99, 102, 241, 0.3); }
-        .week-btn { background: transparent; color: var(--gray-light); border: none; padding: 10px 24px; border-radius: 40px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
-        .week-btn.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: var(--shadow); }
-        .week-title { font-weight: 700; font-size: 1.2rem; color: var(--white); }
+        @media (max-width: 1200px) { .main-content { grid-template-columns: 1fr; } }
+        .card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; box-shadow: var(--shadow-xl); transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; color: var(--white); padding-bottom: 15px; border-bottom: 2px solid rgba(99, 102, 241, 0.3); }
+        .card h2 i { background: linear-gradient(135deg, var(--primary), var(--secondary)); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1.1rem; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--gray-light); font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        select, input { width: 100%; padding: 14px 18px; background: rgba(15, 23, 42, 0.6); border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; font-size: 1rem; color: var(--white); transition: all 0.3s; font-family: inherit; }
+        select:focus, input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); background: rgba(15, 23, 42, 0.8); }
+        .number-input-row { display: flex; gap: 15px; align-items: center; }
+        .single-number-input input { text-align: center; font-weight: 800; font-size: 2rem; padding: 20px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2)); border: 2px solid rgba(99, 102, 241, 0.3); }
+        .btn { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; border: none; padding: 16px 28px; border-radius: 12px; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; }
+        .btn:hover::before { left: 100%; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6); }
+        .btn-clear { background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); }
+        .btn-secondary { background: linear-gradient(135deg, var(--success) 0%, #059669 100%); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
+        .week-selector { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(15, 23, 42, 0.6); padding: 8px; border-radius: 16px; border: 1px solid rgba(99, 102, 241, 0.2); }
+        .week-btn { background: transparent; color: var(--gray-light); border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 0.95rem; }
+        .week-btn:hover { color: var(--white); background: rgba(99, 102, 241, 0.1); }
+        .week-btn.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: var(--shadow-lg); }
+        .week-title { font-weight: 700; font-size: 1.3rem; color: var(--white); text-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
         .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-        .day-card { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 20px; padding: 18px; transition: all 0.2s; }
-        .day-card:hover { transform: translateY(-3px); border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 10px 25px -8px rgba(0,0,0,0.4); }
-        .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(99, 102, 241, 0.3); }
-        .day-name { font-weight: 700; font-size: 1rem; color: var(--white); }
-        .tiro-section { margin-bottom: 16px; background: rgba(0,0,0,0.2); border-radius: 16px; padding: 10px; }
-        .tiro-title { font-weight: 600; color: var(--gray-light); margin-bottom: 8px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
-        .tiro-number-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-        .tiro-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-        .delete-btn { background: rgba(239,68,68,0.2); border: none; color: #f87171; width: 36px; height: 36px; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-        .delete-btn:hover { background: var(--danger); color: white; transform: scale(1.05); }
-        .empty-tiro { color: var(--gray); font-style: italic; font-size: 0.8rem; padding: 8px 0; }
-        .recent-numbers-container { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; justify-content: center; }
-        .recent-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); border-radius: 20px; padding: 8px 12px 8px 16px; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(99,102,241,0.3); transition: all 0.2s; }
-        .recent-card:hover { background: rgba(99,102,241,0.2); transform: translateY(-2px); }
-        .recent-number { font-weight: 800; font-size: 1.3rem; min-width: 55px; text-align: center; }
-        .recent-info { font-size: 0.7rem; color: var(--gray-light); }
-        .delete-recent { background: transparent; border: none; color: var(--gray); cursor: pointer; width: 30px; height: 30px; border-radius: 10px; transition: all 0.2s; }
-        .delete-recent:hover { background: var(--danger); color: white; }
-        .analysis-tabs-container { background: rgba(15, 23, 42, 0.5); border-radius: 20px; padding: 6px; margin-bottom: 25px; }
-        .analysis-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-        .analysis-tab { flex: 1; text-align: center; padding: 14px 16px; border-radius: 16px; cursor: pointer; font-weight: 600; color: var(--gray-light); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .analysis-tab.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: var(--shadow); }
-        .analysis-content { display: none; animation: fade 0.3s ease; }
+        .day-card { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 16px; padding: 20px; transition: all 0.3s; }
+        .day-card:hover { transform: translateY(-3px); border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid rgba(99, 102, 241, 0.2); }
+        .day-name { font-weight: 700; font-size: 1.1rem; color: var(--white); }
+        .tiro-section { margin-bottom: 15px; }
+        .tiro-title { font-weight: 600; color: var(--gray-light); margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .tiro-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); animation: popIn 0.3s ease-out; }
+        @keyframes popIn { 0% { transform: scale(0); } 80% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .empty-tiro { color: var(--gray); font-style: italic; font-size: 0.85rem; padding: 5px 0; }
+        .recent-numbers-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 25px 0; justify-content: center; }
+        .recent-number { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(236, 72, 153, 0.3)); border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; box-shadow: var(--shadow-lg); transition: all 0.3s; backdrop-filter: blur(10px); }
+        .recent-number:hover { transform: scale(1.1) rotate(5deg); box-shadow: var(--shadow-glow); }
+        .recent-number.most-recent { background: linear-gradient(135deg, var(--success), #059669); border-color: var(--success); animation: glow 2s ease-in-out infinite; font-size: 1.6rem; width: 80px; height: 80px; }
+        @keyframes glow { 0%,100% { box-shadow: 0 0 5px var(--success), 0 0 20px var(--success); } 50% { box-shadow: 0 0 20px var(--success), 0 0 40px var(--success); } }
+        .analysis-tabs-container { background: rgba(15, 23, 42, 0.6); border-radius: 16px; margin-bottom: 25px; border: 1px solid rgba(99, 102, 241, 0.2); padding: 6px; }
+        .analysis-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+        .analysis-tab { flex: 1; padding: 16px 20px; text-align: center; cursor: pointer; font-weight: 600; transition: all 0.3s; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--gray-light); min-width: 140px; }
+        .analysis-tab:hover { color: var(--white); background: rgba(99, 102, 241, 0.1); }
+        .analysis-tab.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: var(--shadow-lg); }
+        .analysis-content { display: none; animation: fadeIn 0.5s ease-out; }
         .analysis-content.active { display: block; }
-        @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .result-group { background: rgba(15, 23, 42, 0.5); border-radius: 20px; padding: 22px; margin-bottom: 20px; border-left: 5px solid; transition: all 0.2s; }
-        .result-group:hover { transform: translateX(4px); background: rgba(15, 23, 42, 0.7); }
-        .numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 12px; margin-top: 15px; }
-        .number-item { height: 70px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; box-shadow: var(--shadow); transition: all 0.2s; }
-        .number-item:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
-        .hot-numbers-section { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(236,72,153,0.2)); border-radius: 24px; padding: 28px; backdrop-filter: blur(20px); }
-        .hot-table-container { overflow-x: auto; margin: 20px 0; border-radius: 20px; background: rgba(0,0,0,0.3); padding: 12px; }
-        .hot-table { width: 100%; border-collapse: separate; border-spacing: 6px; }
-        .hot-table td { width: 55px; height: 55px; text-align: center; background: rgba(15,23,42,0.8); border-radius: 14px; font-weight: 700; font-size: 0.9rem; transition: 0.1s; cursor: pointer; }
-        .hot-table td.recent { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 0 8px #10b981; }
-        .hot-table td.horizontal { background: #3b82f6; color: white; }
-        .hot-table td.vertical { background: #f59e0b; color: white; }
-        .hot-table td.diagonal { background: #ec4899; color: white; }
-        .hot-line-group { background: rgba(15,23,42,0.6); border-radius: 20px; padding: 20px; margin-bottom: 20px; border-left: 4px solid; }
-        .hot-numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px,1fr)); gap: 12px; margin-top: 12px; }
-        .hot-number-item { height: 70px; background: #8b5cf6; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; transition: 0.2s; }
-        .bingo-section { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.2)); border-radius: 24px; padding: 28px; }
-        .bingo-chain-item { background: rgba(15,23,42,0.6); border-radius: 20px; padding: 20px; margin-bottom: 18px; border: 2px solid rgba(245,158,11,0.3); position: relative; overflow: hidden; }
-        .bingo-chain-item::before { content: '🎉'; position: absolute; top: 12px; right: 12px; font-size: 1.8rem; opacity: 0.3; }
-        .logic-section { background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(236,72,153,0.15)); padding: 20px; border-radius: 20px; margin-top: 20px; border: 1px dashed rgba(99,102,241,0.5); }
-        .stats-box { background: rgba(15,23,42,0.6); border-radius: 20px; padding: 20px; margin-top: 20px; border-left: 4px solid var(--primary); }
-        .stats-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(99,102,241,0.2); }
-        .toast { position: fixed; bottom: 25px; right: 25px; background: linear-gradient(135deg, var(--success), #059669); color: white; padding: 14px 22px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 600; z-index: 1000; transform: translateX(450px); transition: 0.3s; box-shadow: var(--shadow-xl); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .results-container { margin-top: 20px; }
+        .result-group { margin-bottom: 25px; padding: 25px; background: rgba(15, 23, 42, 0.5); border-radius: 16px; border-left: 4px solid; transition: all 0.3s; }
+        .result-group:hover { transform: translateX(5px); background: rgba(15, 23, 42, 0.7); }
+        .result-group.horizontal-up { border-left-color: var(--success); }
+        .result-group.horizontal-down { border-left-color: #8b5cf6; }
+        .result-group h4 { color: var(--white); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 1.2rem; }
+        .numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 15px; margin-top: 15px; }
+        .number-item { height: 75px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; box-shadow: var(--shadow-lg); transition: all 0.3s; cursor: pointer; overflow: hidden; }
+        .number-item:hover { transform: translateY(-5px) scale(1.05); box-shadow: var(--shadow-glow); }
+        .hot-numbers-section { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2)); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 20px; padding: 30px; margin-top: 20px; backdrop-filter: blur(20px); }
+        .hot-table-container { overflow-x: auto; margin: 25px 0; border-radius: 16px; border: 2px solid rgba(139, 92, 246, 0.3); background: rgba(15, 23, 42, 0.6); padding: 15px; }
+        .hot-table { width: 100%; border-collapse: separate; border-spacing: 4px; }
+        .hot-table td { width: 60px; height: 60px; text-align: center; border: 2px solid rgba(99, 102, 241, 0.2); font-weight: 700; font-size: 1.1rem; color: var(--gray-light); background: rgba(15, 23, 42, 0.8); border-radius: 12px; transition: all 0.3s; cursor: pointer; }
+        .hot-table td:hover:not(.empty) { transform: scale(1.1); border-color: var(--primary); box-shadow: 0 0 15px rgba(99, 102, 241, 0.5); color: var(--white); }
+        .hot-table td.empty { background: transparent; border: none; cursor: default; }
+        .hot-table td.recent { background: linear-gradient(135deg, var(--success), #059669); color: white; border-color: var(--success); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); animation: pulse-glow 2s infinite; }
+        .hot-table td.horizontal { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+        .hot-table td.vertical { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .hot-table td.diagonal { background: linear-gradient(135deg, #ec4899, #db2777); color: white; }
+        .hot-line-group { background: rgba(15, 23, 42, 0.6); border-radius: 16px; padding: 25px; margin-bottom: 20px; border-left: 4px solid; transition: all 0.3s; }
+        .hot-line-group.horizontal { border-left-color: #3b82f6; }
+        .hot-line-group.vertical { border-left-color: #f59e0b; }
+        .hot-line-group.diagonal { border-left-color: #ec4899; }
+        .hot-numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 12px; margin-top: 15px; }
+        .hot-number-item { height: 75px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; box-shadow: var(--shadow-lg); transition: all 0.3s; }
+        .hot-number-item:hover { transform: translateY(-3px) scale(1.05); }
+        .bingo-section { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2)); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 20px; padding: 30px; margin-top: 20px; backdrop-filter: blur(20px); }
+        .bingo-chain-item { background: rgba(15, 23, 42, 0.6); border-radius: 16px; padding: 25px; margin-bottom: 20px; border: 2px solid rgba(245, 158, 11, 0.3); transition: all 0.3s; position: relative; overflow: hidden; }
+        .bingo-chain-item::before { content: '🎉'; position: absolute; top: 10px; right: 10px; font-size: 2rem; opacity: 0.3; }
+        .logic-section { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(236, 72, 153, 0.15)); padding: 25px; border-radius: 16px; margin-top: 25px; border: 2px dashed rgba(99, 102, 241, 0.4); }
+        .stats-box { background: rgba(15, 23, 42, 0.6); border-radius: 16px; padding: 25px; margin-top: 25px; border-left: 4px solid var(--primary); }
+        .stats-row { display: flex; justify-content: space-between; margin-bottom: 12px; padding: 10px 0; border-bottom: 1px solid rgba(99, 102, 241, 0.2); }
+        .source-info { background: rgba(99, 102, 241, 0.15); border-radius: 12px; padding: 15px; margin-top: 15px; border-left: 4px solid var(--primary); }
+        .empty-results { text-align: center; padding: 60px 20px; color: var(--gray); }
+        .empty-recent { text-align: center; padding: 40px; color: var(--gray); font-style: italic; }
+        .instructions { background: var(--glass); backdrop-filter: blur(20px); border-radius: 20px; padding: 35px; margin-top: 40px; }
+        .footer { text-align: center; margin-top: 50px; padding: 30px; color: var(--gray); border-top: 1px solid rgba(99, 102, 241, 0.2); }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--success), #059669); color: white; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease-out; }
         .toast.show { transform: translateX(0); }
-        .toast.error { background: linear-gradient(135deg, var(--danger), #b91c1c); }
-        .footer { text-align: center; margin-top: 50px; padding: 25px; color: var(--gray); border-top: 1px solid rgba(99,102,241,0.2); font-size: 0.85rem; }
-        @media (max-width: 700px) { .analysis-tabs { flex-direction: column; } .week-selector { flex-direction: column; gap: 10px; } .tiro-number { width: 50px; height: 50px; font-size: 1rem; } }
+        .toast.error { background: linear-gradient(135deg, var(--danger), #dc2626); }
+        @media (max-width: 768px) { .analysis-tabs { flex-direction: column; } .week-selector { flex-direction: column; gap: 10px; } }
+        
+        /* Estilos específicos para las tablas de operaciones por número */
+        .numero-operaciones-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+        }
+        .numero-operaciones-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+        }
+        .card-header .numero-origen {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ops-mini-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .ops-mini-table th {
+            text-align: left;
+            padding: 8px;
+            color: var(--gray-light);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .ops-mini-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(99,102,241,0.2);
+            font-weight: 500;
+        }
+        .resultado-numero {
+            font-family: monospace;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .acertado {
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .badge-acierto {
+            background: #10b981;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +214,7 @@
         <div class="badge-container">
             <div class="badge"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
             <div class="badge"><i class="fas fa-fire"></i> Números Calientes</div>
+            <div class="badge"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
             <div class="badge"><i class="fas fa-trophy"></i> Sistema BINGO</div>
         </div>
     </header>
@@ -165,10 +247,10 @@
                 <h2><i class="fas fa-history"></i> Últimos Números</h2>
                 <div id="recentNumbers" class="recent-numbers-container"><div class="empty-recent">No hay números registrados aún</div></div>
                 <div class="logic-section">
-                    <h3 style="font-size:1rem; margin-bottom:12px;"><i class="fas fa-robot"></i> Acciones Rápidas</h3>
-                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <button id="refreshBtn" class="btn btn-secondary" style="flex:1;"><i class="fas fa-sync-alt"></i> Actualizar</button>
-                        <button id="clearBtn" class="btn btn-clear" style="flex:1;"><i class="fas fa-trash-alt"></i> Limpiar Todo</button>
+                    <h3><i class="fas fa-robot"></i> Acciones Rápidas</h3>
+                    <div class="logic-controls">
+                        <button id="refreshBtn" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Actualizar Análisis</button>
+                        <button id="clearBtn" class="btn btn-clear"><i class="fas fa-trash-alt"></i> Limpiar Datos</button>
                     </div>
                 </div>
             </div>
@@ -179,6 +261,7 @@
                     <div class="analysis-tab active" data-tab="number"><i class="fas fa-calendar-alt"></i> Registro Semanal</div>
                     <div class="analysis-tab" data-tab="third-row"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
                     <div class="analysis-tab" data-tab="hot-numbers"><i class="fas fa-fire"></i> Números Calientes</div>
+                    <div class="analysis-tab" data-tab="operaciones"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
                     <div class="analysis-tab" data-tab="bingo"><i class="fas fa-trophy"></i> BINGO</div>
                 </div>
             </div>
@@ -204,6 +287,19 @@
                     <div id="hotStats" class="hot-stats" style="display: none;"><div class="hot-stat"><div class="hot-stat-value" id="hotLinesFound">0</div><div class="hot-stat-label">Líneas</div></div><div class="hot-stat"><div class="hot-stat-value" id="hotNumbersRecommended">0</div><div class="hot-stat-label">Recomendados</div></div></div>
                 </div>
             </div>
+            <!-- NUEVO APARTADO: OPERACIONES DE SUMA Y RESTA (con diseño por número) -->
+            <div id="operacionesAnalysis" class="analysis-content">
+                <div class="card">
+                    <h2><i class="fas fa-plus-minus"></i> Predicciones por Suma / Resta</h2>
+                    <div id="operacionesResults" class="results-container">
+                        <div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver las operaciones de suma y resta</p></div>
+                    </div>
+                    <div id="operacionesStats" class="stats-box" style="display: none;">
+                        <h5><i class="fas fa-chart-line"></i> Historial de aciertos</h5>
+                        <div id="aciertosList" style="max-height: 200px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
             <div id="bingoAnalysis" class="analysis-content">
                 <div class="bingo-section">
                     <h2><i class="fas fa-trophy"></i> ¡BINGO! Resultados</h2>
@@ -213,13 +309,15 @@
             </div>
         </div>
     </div>
+    <div class="instructions"><h3><i class="fas fa-info-circle"></i> Cómo usar</h3><ol><li><strong>Registra números</strong> (solo uno por día/horario).</li><li><strong>Terceras Filas:</strong> analiza últimos 4 números y sugiere patrones.</li><li><strong>Números Calientes:</strong> detecta líneas en tabla 11x11.</li><li><strong>Sumas / Restas:</strong> Para cada uno de los últimos 4 números se aplican +4, -4, +7, -7, +10, -10, +11, -11, +15, -15, +20, -20, +40, -40. Si el resultado supera 99 o es negativo, se toman solo los dos últimos dígitos (módulo 100). ¡Se notifica automáticamente si acierta en el futuro!</li>
+    </div>
     <div class="footer"><p><i class="fas fa-heart" style="color: var(--danger);"></i> Sistema de Lotería Pro - Análisis Avanzado</p></div>
 </div>
 <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Éxito</span></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ====================== TABLAS ======================
+    // ========== TABLAS ORIGINALES ==========
     const table1 = [
         [47,42,67,92],[20,45,70,95],[13,38,63,88],[6,31,56,81],[15,40,65,90],[16,41,66,91],
         [2,27,52,77],[18,43,68,93],[19,44,69,94],[12,37,62,87],[10,35,60,85],[22,47,72,97],
@@ -236,7 +334,17 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     const daysOfWeek = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
     
-    // ====================== ELEMENTOS DOM ======================
+    // ========== VALORES PARA SUMAS Y RESTAS (según solicitud) ==========
+    const operadores = [4, 7, 10, 11, 15, 20, 40]; // se usan para + y -
+    
+    // Función para ajustar resultado al rango 0-99 (módulo 100)
+    function ajustarMod100(valor) {
+        let res = valor % 100;
+        if (res < 0) res += 100;
+        return res;
+    }
+    
+    // ========== ELEMENTOS DOM ==========
     const elements = {
         weekSelect: document.getElementById('weekSelect'), daySelect: document.getElementById('daySelect'),
         timeSelect: document.getElementById('timeSelect'), tiroNumberInput: document.getElementById('tiroNumber'),
@@ -254,22 +362,26 @@ document.addEventListener('DOMContentLoaded', function() {
         bingoWeek: document.getElementById('bingoWeek'), analysisTabs: document.querySelectorAll('.analysis-tab'),
         numberAnalysis: document.getElementById('numberAnalysis'), thirdRowAnalysis: document.getElementById('thirdRowAnalysis'),
         hotNumbersAnalysis: document.getElementById('hotNumbersAnalysis'), bingoAnalysis: document.getElementById('bingoAnalysis'),
+        operacionesAnalysis: document.getElementById('operacionesAnalysis'), operacionesResults: document.getElementById('operacionesResults'),
+        operacionesStats: document.getElementById('operacionesStats'), aciertosList: document.getElementById('aciertosList'),
         toast: document.getElementById('toast'), toastMessage: document.getElementById('toastMessage')
     };
     
-    // ====================== DATA ======================
+    // ========== DATA ==========
     let lotteryData = { week1: {}, week2: {} };
     let currentWeek = 1;
     let registroHistorial = [];
     let bingoChains = [];
     let lastAnalysisResults = null;
+    let prediccionesRealizadas = []; // {numeroPredicho, operacionTexto, desdeNumero, operador, tipo}
+    let aciertosSumaResta = [];     // historial de aciertos
     
-    // ====================== HELPERS ======================
+    // ========== HELPERS ==========
     function createBackgroundParticles() {
         const container = document.getElementById('bgAnimation');
-        for (let i=0;i<25;i++) { let s=document.createElement('span'); s.style.left=Math.random()*100+'%'; s.style.animationDelay=Math.random()*20+'s'; s.style.animationDuration=(12+Math.random()*12)+'s'; container.appendChild(s); }
+        for (let i=0;i<20;i++) { let s=document.createElement('span'); s.style.left=Math.random()*100+'%'; s.style.animationDelay=Math.random()*20+'s'; s.style.animationDuration=(15+Math.random()*10)+'s'; container.appendChild(s); }
     }
-    function showToast(msg, type='success') { elements.toastMessage.textContent=msg; elements.toast.className='toast show '+type; setTimeout(()=>elements.toast.classList.remove('show'),2800); }
+    function showToast(msg, type='success') { elements.toastMessage.textContent=msg; elements.toast.className='toast show '+type; setTimeout(()=>elements.toast.classList.remove('show'),3500); }
     function initializeEmptyData() { for(let w=1;w<=2;w++) { const wk=`week${w}`; lotteryData[wk]={}; for(let d=0;d<7;d++) lotteryData[wk][d]={ morning: null, evening: null }; } }
     function migrateOldData() { for(let w=1;w<=2;w++) { const wk=`week${w}`; if(lotteryData[wk]) for(let d=0;d<7;d++) { if(lotteryData[wk][d]) { if(Array.isArray(lotteryData[wk][d].morning)) lotteryData[wk][d].morning = lotteryData[wk][d].morning.length ? lotteryData[wk][d].morning[lotteryData[wk][d].morning.length-1] : null; if(Array.isArray(lotteryData[wk][d].evening)) lotteryData[wk][d].evening = lotteryData[wk][d].evening.length ? lotteryData[wk][d].evening[lotteryData[wk][d].evening.length-1] : null; } else lotteryData[wk][d]={ morning: null, evening: null }; } else { lotteryData[wk]={}; for(let d=0;d<7;d++) lotteryData[wk][d]={ morning: null, evening: null }; } } }
     function loadData() {
@@ -279,10 +391,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if(hist) registroHistorial = JSON.parse(hist);
         const bingo = localStorage.getItem('lotteryBingoChains');
         if(bingo) bingoChains = JSON.parse(bingo);
+        const pred = localStorage.getItem('prediccionesSumaResta');
+        if(pred) prediccionesRealizadas = JSON.parse(pred);
+        const aciertos = localStorage.getItem('aciertosSumaResta');
+        if(aciertos) aciertosSumaResta = JSON.parse(aciertos);
     }
-    function saveData() { localStorage.setItem('lotteryWeeklyData',JSON.stringify(lotteryData)); localStorage.setItem('lotteryRegistroHistorial',JSON.stringify(registroHistorial)); localStorage.setItem('lotteryBingoChains',JSON.stringify(bingoChains)); }
+    function saveData() { 
+        localStorage.setItem('lotteryWeeklyData',JSON.stringify(lotteryData)); 
+        localStorage.setItem('lotteryRegistroHistorial',JSON.stringify(registroHistorial)); 
+        localStorage.setItem('lotteryBingoChains',JSON.stringify(bingoChains));
+        localStorage.setItem('prediccionesSumaResta',JSON.stringify(prediccionesRealizadas));
+        localStorage.setItem('aciertosSumaResta',JSON.stringify(aciertosSumaResta));
+    }
     
-    // ====================== RENDER (con botones de eliminar) ======================
+    // ========== RENDER SEMANAL Y RECIENTES ==========
     function renderWeek(week) {
         const wk=`week${week}`;
         elements.daysContainer.innerHTML='';
@@ -290,90 +412,190 @@ document.addEventListener('DOMContentLoaded', function() {
             const data=lotteryData[wk][d];
             const card=document.createElement('div'); card.className='day-card';
             card.innerHTML=`<div class="day-header"><div class="day-name">${daysOfWeek[d]}</div></div>`;
-            // Mañana
-            const mornDiv=document.createElement('div'); mornDiv.className='tiro-section';
-            mornDiv.innerHTML=`<div class="tiro-title"><i class="fas fa-sun"></i> Mañana</div><div class="tiro-number-wrapper" id="morn-${week}-${d}"></div>`;
-            const mornWrap=mornDiv.querySelector('.tiro-number-wrapper');
-            if(data.morning!==null){
-                mornWrap.innerHTML=`<div class="tiro-number">${data.morning.toString().padStart(2,'0')}</div><button class="delete-btn" data-week="${week}" data-day="${d}" data-time="morning"><i class="fas fa-trash-alt"></i></button>`;
-            } else mornWrap.innerHTML='<div class="empty-tiro">Sin datos</div>';
-            card.appendChild(mornDiv);
-            // Noche
-            const eveDiv=document.createElement('div'); eveDiv.className='tiro-section';
-            eveDiv.innerHTML=`<div class="tiro-title"><i class="fas fa-moon"></i> Noche</div><div class="tiro-number-wrapper" id="eve-${week}-${d}"></div>`;
-            const eveWrap=eveDiv.querySelector('.tiro-number-wrapper');
-            if(data.evening!==null){
-                eveWrap.innerHTML=`<div class="tiro-number">${data.evening.toString().padStart(2,'0')}</div><button class="delete-btn" data-week="${week}" data-day="${d}" data-time="evening"><i class="fas fa-trash-alt"></i></button>`;
-            } else eveWrap.innerHTML='<div class="empty-tiro">Sin datos</div>';
-            card.appendChild(eveDiv);
+            const morn=document.createElement('div'); morn.className='tiro-section'; morn.innerHTML=`<div class="tiro-title"><i class="fas fa-sun"></i> Mañana</div>`;
+            if(data.morning!==null) { let n=document.createElement('div'); n.className='tiro-number'; n.textContent=data.morning.toString().padStart(2,'0'); morn.appendChild(n); } else morn.innerHTML+='<div class="empty-tiro">Sin datos</div>';
+            card.appendChild(morn);
+            const eve=document.createElement('div'); eve.className='tiro-section'; eve.innerHTML=`<div class="tiro-title"><i class="fas fa-moon"></i> Noche</div>`;
+            if(data.evening!==null) { let n=document.createElement('div'); n.className='tiro-number'; n.textContent=data.evening.toString().padStart(2,'0'); eve.appendChild(n); } else eve.innerHTML+='<div class="empty-tiro">Sin datos</div>';
+            card.appendChild(eve);
             elements.daysContainer.appendChild(card);
         }
-        // Eventos de eliminación en semana
-        document.querySelectorAll('.delete-btn').forEach(btn=>{
-            btn.addEventListener('click',(e)=>{
-                e.stopPropagation();
-                const week=parseInt(btn.dataset.week);
-                const day=parseInt(btn.dataset.day);
-                const time=btn.dataset.time;
-                deleteNumber(week,day,time);
-            });
-        });
     }
-    
-    function deleteNumber(week,day,time){
-        const wk=`week${week}`;
-        const num=lotteryData[wk][day][time];
-        if(num===null) return;
-        if(confirm(`¿Eliminar número ${num.toString().padStart(2,'0')} de ${daysOfWeek[day]} - ${time==='morning'?'Mañana':'Noche'}?`)){
-            lotteryData[wk][day][time]=null;
-            // Eliminar del historial (primera coincidencia)
-            const idx=registroHistorial.findIndex(r=>r.week===week && r.day===day && r.time===time && r.number===num);
-            if(idx!==-1) registroHistorial.splice(idx,1);
-            saveData();
-            updateRecentNumbersDisplay();
-            renderWeek(currentWeek);
-            performAllAnalyses();
-            showToast(`Número ${num.toString().padStart(2,'0')} eliminado`,'warning');
-        }
-    }
-    
     function updateRecentNumbersDisplay() {
         elements.recentNumbersDiv.innerHTML='';
-        if(registroHistorial.length===0){
-            elements.recentNumbersDiv.innerHTML='<div class="empty-recent">No hay números registrados aún</div>';
-            return;
-        }
-        registroHistorial.slice(0,10).forEach((r,idx)=>{
-            const card=document.createElement('div'); card.className='recent-card';
-            card.innerHTML=`
-                <div class="recent-number ${idx===0?'most-recent':''}">${r.number.toString().padStart(2,'0')}</div>
-                <div class="recent-info">${daysOfWeek[r.day].substring(0,3)} ${r.time==='morning'?'🌅':'🌙'} S${r.week}</div>
-                <button class="delete-recent" data-number="${r.number}" data-week="${r.week}" data-day="${r.day}" data-time="${r.time}"><i class="fas fa-times-circle"></i></button>
-            `;
-            elements.recentNumbersDiv.appendChild(card);
-        });
-        document.querySelectorAll('.delete-recent').forEach(btn=>{
-            btn.addEventListener('click',(e)=>{
-                e.stopPropagation();
-                const week=parseInt(btn.dataset.week);
-                const day=parseInt(btn.dataset.day);
-                const time=btn.dataset.time;
-                const number=parseInt(btn.dataset.number);
-                if(confirm(`Eliminar ${number.toString().padStart(2,'0')}?`)){
-                    if(lotteryData[`week${week}`][day][time]===number) lotteryData[`week${week}`][day][time]=null;
-                    const idx=registroHistorial.findIndex(r=>r.week===week && r.day===day && r.time===time && r.number===number);
-                    if(idx!==-1) registroHistorial.splice(idx,1);
-                    saveData();
-                    updateRecentNumbersDisplay();
-                    renderWeek(currentWeek);
-                    performAllAnalyses();
-                    showToast('Eliminado','warning');
-                }
-            });
-        });
+        const recents=registroHistorial.slice(0,8);
+        if(recents.length===0) { elements.recentNumbersDiv.innerHTML='<div class="empty-recent">No hay números registrados aún</div>'; return; }
+        recents.forEach((r,i)=>{ let d=document.createElement('div'); d.className='recent-number'; if(i===0) d.classList.add('most-recent'); d.innerHTML=`<div>${r.number.toString().padStart(2,'0')}</div><div class="day">${daysOfWeek[r.day].substring(0,3)}</div>`; elements.recentNumbersDiv.appendChild(d); });
     }
     
-    // ====================== GUARDAR NUEVO ======================
+    // ========== GENERAR PREDICCIONES (con módulo 100) ==========
+    function generarPredicciones(ultimosNumeros) {
+        let nuevasPredicciones = [];
+        for (let num of ultimosNumeros) {
+            for (let op of operadores) {
+                let sumaReal = num + op;
+                let restaReal = num - op;
+                let sumaAjustada = ajustarMod100(sumaReal);
+                let restaAjustada = ajustarMod100(restaReal);
+                // Para suma
+                let sumaTexto = `${num} + ${op} = ${sumaAjustada.toString().padStart(2,'0')}`;
+                if (sumaReal !== sumaAjustada) sumaTexto += ` (${sumaReal})`;
+                nuevasPredicciones.push({
+                    numeroPredicho: sumaAjustada,
+                    operacionTexto: sumaTexto,
+                    desdeNumero: num,
+                    operador: op,
+                    tipo: 'suma'
+                });
+                // Para resta
+                let restaTexto = `${num} - ${op} = ${restaAjustada.toString().padStart(2,'0')}`;
+                if (restaReal !== restaAjustada) restaTexto += ` (${restaReal})`;
+                nuevasPredicciones.push({
+                    numeroPredicho: restaAjustada,
+                    operacionTexto: restaTexto,
+                    desdeNumero: num,
+                    operador: op,
+                    tipo: 'resta'
+                });
+            }
+        }
+        // eliminar duplicados exactos (mismo origen, operador y tipo)
+        const unique = [];
+        const seen = new Set();
+        for (let p of nuevasPredicciones) {
+            const key = `${p.desdeNumero}_${p.operador}_${p.tipo}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                unique.push(p);
+            }
+        }
+        return unique;
+    }
+    
+    // ========== ACTUALIZAR PANEL DE OPERACIONES (con diseño por número y módulo 100) ==========
+    function actualizarPanelOperaciones() {
+        const ultimos = registroHistorial.slice(0,4).map(r=>r.number);
+        if(ultimos.length === 0) {
+            elements.operacionesResults.innerHTML = '<div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver las operaciones de suma y resta</p></div>';
+            elements.operacionesStats.style.display = 'none';
+            return;
+        }
+        
+        // Generar predicciones actuales y guardar en memoria (para futuras comprobaciones)
+        let prediccionesActuales = generarPredicciones(ultimos);
+        for (let pred of prediccionesActuales) {
+            const yaExiste = prediccionesRealizadas.some(p => p.numeroPredicho === pred.numeroPredicho && p.desdeNumero === pred.desdeNumero && p.operador === pred.operador && p.tipo === pred.tipo);
+            if (!yaExiste) {
+                prediccionesRealizadas.push(pred);
+            }
+        }
+        saveData();
+        
+        // Construir HTML por cada número de los últimos 4
+        let html = `<div class="result-group" style="border-left-color: var(--accent); margin-bottom: 20px;">
+                        <h4><i class="fas fa-chart-line"></i> Últimos 4 números registrados: ${ultimos.map(n=>n.toString().padStart(2,'0')).join(' , ')}</h4>
+                    </div>`;
+        
+        for (let num of ultimos) {
+            // Recolectar operaciones para este número
+            let operaciones = [];
+            for (let op of operadores) {
+                let sumaReal = num + op;
+                let restaReal = num - op;
+                let sumaAjustada = ajustarMod100(sumaReal);
+                let restaAjustada = ajustarMod100(restaReal);
+                let sumaTexto = `${num} + ${op} = ${sumaAjustada.toString().padStart(2,'0')}`;
+                let restaTexto = `${num} - ${op} = ${restaAjustada.toString().padStart(2,'0')}`;
+                if (sumaReal !== sumaAjustada) sumaTexto += ` (${sumaReal})`;
+                if (restaReal !== restaAjustada) restaTexto += ` (${restaReal})`;
+                
+                // Verificar si ya ha acertado alguna vez este resultado
+                let sumaAcertada = aciertosSumaResta.some(a => a.numeroPredicho === sumaAjustada && a.desdeNumero === num && a.operador === op && a.tipo === 'suma');
+                let restaAcertada = aciertosSumaResta.some(a => a.numeroPredicho === restaAjustada && a.desdeNumero === num && a.operador === op && a.tipo === 'resta');
+                
+                operaciones.push({
+                    operacion: sumaTexto,
+                    resultado: sumaAjustada,
+                    tipo: 'suma',
+                    acertado: sumaAcertada
+                });
+                operaciones.push({
+                    operacion: restaTexto,
+                    resultado: restaAjustada,
+                    tipo: 'resta',
+                    acertado: restaAcertada
+                });
+            }
+            // Ordenar por operador para mejor visualización
+            operaciones.sort((a,b) => {
+                let valA = parseInt(a.operacion.split(' ')[2]);
+                let valB = parseInt(b.operacion.split(' ')[2]);
+                return valA - valB;
+            });
+            
+            html += `<div class="numero-operaciones-card">
+                        <div class="card-header">
+                            <div class="numero-origen">${num.toString().padStart(2,'0')}</div>
+                            <div style="font-size:0.8rem; color:var(--gray-light);">Número base</div>
+                        </div>
+                        <table class="ops-mini-table">
+                            <thead>
+                                <tr><th>Operación</th><th>Resultado</th></tr>
+                            </thead>
+                            <tbody>`;
+            for (let op of operaciones) {
+                let claseResultado = op.acertado ? 'acertado' : '';
+                let badge = op.acertado ? '<span class="badge-acierto">✔️ acertado</span>' : '';
+                html += `<tr><td>${op.operacion}</td><td class="resultado-numero ${claseResultado}">${op.resultado.toString().padStart(2,'0')} ${badge}</td></tr>`;
+            }
+            html += `</tbody></table></div>`;
+        }
+        
+        // Mostrar historial de aciertos
+        let aciertosHtml = `<div style="margin-top: 15px;"><strong>Últimos aciertos registrados:</strong><ul style="margin-top: 10px; list-style: none;">`;
+        if (aciertosSumaResta.length === 0) {
+            aciertosHtml += `<li>Sin aciertos aún.</li>`;
+        } else {
+            aciertosSumaResta.slice(0,10).forEach(ac => {
+                aciertosHtml += `<li style="margin-bottom: 8px;">🎯 <strong>${ac.operacionTexto}</strong> → Salió el número ${ac.numeroAcertado.toString().padStart(2,'0')} el ${new Date(ac.fechaAcierto).toLocaleDateString()}</li>`;
+            });
+        }
+        aciertosHtml += `</ul></div>`;
+        
+        elements.operacionesResults.innerHTML = html;
+        elements.operacionesStats.style.display = 'block';
+        elements.aciertosList.innerHTML = aciertosHtml;
+    }
+    
+    // ========== VERIFICAR ACIERTO DE SUMA/RESTA ==========
+    function verificarAciertoSumaResta(nuevoNumero) {
+        let aciertosEncontrados = [];
+        for (let pred of prediccionesRealizadas) {
+            if (pred.numeroPredicho === nuevoNumero) {
+                aciertosEncontrados.push(pred);
+            }
+        }
+        if (aciertosEncontrados.length > 0) {
+            for (let acierto of aciertosEncontrados) {
+                // Registrar acierto
+                const registroAcierto = {
+                    ...acierto,
+                    numeroAcertado: nuevoNumero,
+                    fechaAcierto: new Date().toISOString()
+                };
+                aciertosSumaResta.unshift(registroAcierto);
+                if (aciertosSumaResta.length > 30) aciertosSumaResta.pop();
+                // Mostrar notificación destacada
+                showToast(`✨ ¡ACERTO POR SUMA/RESTA! ${acierto.operacionTexto}`, 'success');
+                // Opcional: eliminar la predicción para no volver a notificarla (descomentar si se desea)
+                // prediccionesRealizadas = prediccionesRealizadas.filter(p => p !== acierto);
+            }
+            saveData();
+            actualizarPanelOperaciones(); // refrescar la vista
+        }
+    }
+    
+    // ========== GUARDAR NUEVO TIRO ==========
     function saveTiro() {
         const week = parseInt(elements.weekSelect.value);
         const day = parseInt(elements.daySelect.value);
@@ -385,7 +607,12 @@ document.addEventListener('DOMContentLoaded', function() {
         lotteryData[`week${week}`][day][time] = number;
         const registro = { number, week, day, time, timestamp: new Date().toISOString() };
         registroHistorial.unshift(registro);
+        
+        // Verificar BINGO normal
         checkForBingo(registro);
+        // Verificar acierto por suma/resta
+        verificarAciertoSumaResta(number);
+        
         saveData();
         updateRecentNumbersDisplay();
         renderWeek(currentWeek);
@@ -395,9 +622,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function switchWeek(week) { currentWeek=week; elements.week1Btn.classList.toggle('active',week===1); elements.week2Btn.classList.toggle('active',week===2); elements.weekTitle.textContent=`Semana ${week}`; renderWeek(week); }
-    function clearAllData() { if(confirm('Eliminar TODOS los datos?')) { initializeEmptyData(); registroHistorial=[]; bingoChains=[]; lastAnalysisResults=null; saveData(); updateRecentNumbersDisplay(); renderWeek(currentWeek); clearHotTableHighlights(); elements.analysisResults.innerHTML='<div class="empty-results"><i class="fas fa-chart-bar"></i><p>Registra números para ver el análisis</p></div>'; elements.hotAnalysisResults.innerHTML='<div class="empty-results"><i class="fas fa-search"></i><p>Analiza números para patrones</p></div>'; elements.bingoResults.innerHTML='<div class="empty-results"><i class="fas fa-trophy"></i><p>Sin BINGOS</p></div>'; elements.statsBox.style.display='none'; elements.hotStats.style.display='none'; elements.bingoStats.style.display='none'; showToast('Datos eliminados'); } }
+    function clearAllData() { if(confirm('Eliminar TODOS los datos? Incluye predicciones y aciertos de suma/resta.')) { initializeEmptyData(); registroHistorial=[]; bingoChains=[]; prediccionesRealizadas=[]; aciertosSumaResta=[]; lastAnalysisResults=null; saveData(); updateRecentNumbersDisplay(); renderWeek(currentWeek); clearHotTableHighlights(); elements.analysisResults.innerHTML='<div class="empty-results"><i class="fas fa-chart-bar"></i><p>Registra números para ver el análisis</p></div>'; elements.hotAnalysisResults.innerHTML='<div class="empty-results"><i class="fas fa-search"></i><p>Analiza números para patrones</p></div>'; elements.bingoResults.innerHTML='<div class="empty-results"><i class="fas fa-trophy"></i><p>Sin BINGOS</p></div>'; elements.operacionesResults.innerHTML='<div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver operaciones</p></div>'; elements.statsBox.style.display='none'; elements.hotStats.style.display='none'; elements.bingoStats.style.display='none'; elements.operacionesStats.style.display='none'; showToast('Datos eliminados'); } }
     
-    // ====================== ANÁLISIS ======================
+    // ========== TERCERAS FILAS (original) ==========
     function findNumberInTable(num) { for(let r=0;r<table1.length;r++) for(let c=0;c<table1[r].length;c++) if(table1[r][c]===num) return { row:r, col:c }; return null; }
     function getThirdRowWithCircularLogic(startRow, dir) { let target = dir==='up' ? startRow-3 : startRow+3; if(dir==='up' && target<0) target=table1.length+target; if(dir==='down' && target>=table1.length) target=target-table1.length; if(target<0) target=0; if(target>=table1.length) target=table1.length-1; return { row:target, numbers:[...table1[target]] }; }
     function performThirdRowAnalysis() {
@@ -415,8 +642,25 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.statNumbersCount.textContent=`${recent.length} números`; elements.statUpCount.textContent=`${totalUp.length} números`; elements.statDownCount.textContent=`${totalDown.length} números`; elements.statTotalUnique.textContent=`${totalAll.length} números`;
     }
     
-    // ====================== NÚMEROS CALIENTES ======================
-    function generateHotTable() { elements.hotTable.innerHTML=''; hotTable11x11.forEach((row,r)=>{ let tr=document.createElement('tr'); row.forEach((num,c)=>{ let td=document.createElement('td'); if(num===null){ td.className='empty'; td.innerHTML='&nbsp;'; } else { td.textContent=num.toString().padStart(2,'0'); } tr.appendChild(td); }); elements.hotTable.appendChild(tr); }); }
+    // ========== NÚMEROS CALIENTES (original) ==========
+    function generateHotTable() { 
+        elements.hotTable.innerHTML=''; 
+        hotTable11x11.forEach((row,r)=>{ 
+            let tr=document.createElement('tr'); 
+            row.forEach((num,c)=>{ 
+                let td=document.createElement('td'); 
+                if(num===null){ 
+                    td.className='empty'; 
+                    td.innerHTML='&nbsp;'; 
+                } else { 
+                    td.textContent=num.toString().padStart(2,'0'); 
+                    td.title=`Fila ${r+1}, Col ${c+1}`; 
+                } 
+                tr.appendChild(td); 
+            }); 
+            elements.hotTable.appendChild(tr); 
+        }); 
+    }
     function findNumberInHotTable(num) { for(let r=0;r<11;r++) for(let c=0;c<11;c++) if(hotTable11x11[r][c]===num) return { row:r, col:c }; return null; }
     function highlightHotCell(row,col,cls) { let cell=document.querySelector(`#hotTable tr:nth-child(${row+1}) td:nth-child(${col+1})`); if(cell && !cell.classList.contains('empty')) cell.classList.add(cls); }
     function clearHotTableHighlights() { document.querySelectorAll('#hotTable td').forEach(cell=>{ cell.className=''; if(!cell.textContent.trim()) cell.classList.add('empty'); }); }
@@ -467,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
         displayHotResults(lines,recent);
     }
     
-    // ====================== BINGO ======================
+    // ========== BINGO ==========
     function checkForBingo(newPlay) {
         if(!lastAnalysisResults || registroHistorial.length<2) return;
         let isBingo=false, sourceInfo=null;
@@ -484,12 +728,12 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.bingoResults.innerHTML=''; elements.bingoStats.style.display='flex';
         let thisWeek = bingoChains.filter(b=>new Date(b.date) > new Date(Date.now()-7*86400000)).length;
         elements.bingoTotal.textContent=bingoChains.length; elements.bingoWeek.textContent=thisWeek;
-        bingoChains.forEach((b,idx)=>{ let item=document.createElement('div'); item.className='bingo-chain-item'; let date=new Date(b.date); let dateStr=date.toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); item.innerHTML=`<div style="display:flex;justify-content:space-between;"><div style="font-weight:700;"><i class="fas fa-trophy" style="color:#f59e0b;"></i> BINGO #${idx+1}</div><div style="background:rgba(245,158,11,0.2);padding:6px 12px;border-radius:8px;">${dateStr}</div></div><div style="text-align:center;margin:15px 0;"><div style="font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${b.number.toString().padStart(2,'0')}</div><div>¡Acertado!</div></div><div style="background:rgba(15,23,42,0.8);padding:15px;border-radius:12px;"><div><strong>Origen:</strong> Nº ${b.sourceNumber.toString().padStart(2,'0')}</div><div><strong>Tipo:</strong> ${b.type}</div><div><strong>Cuando:</strong> ${daysOfWeek[b.day]} - ${b.time==='morning'?'Mañana':'Noche'}</div></div>`; elements.bingoResults.appendChild(item); });
+        bingoChains.forEach((b,idx)=>{ let item=document.createElement('div'); item.className='bingo-chain-item'; let date=new Date(b.date); let dateStr=date.toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); item.innerHTML=`<div style="display:flex;justify-content:space-between;"><div style="font-weight:700;"><i class="fas fa-trophy" style="color:#f59e0b;"></i> BINGO #${idx+1}</div><div style="background:rgba(245,158,11,0.2);padding:6px 12px;border-radius:8px;">${dateStr}</div></div><div style="text-align:center;margin:15px 0;"><div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${b.number.toString().padStart(2,'0')}</div><div>¡Acertado!</div></div><div style="background:rgba(15,23,42,0.8);padding:15px;border-radius:12px;"><div><strong>Origen:</strong> Nº ${b.sourceNumber.toString().padStart(2,'0')}</div><div><strong>Tipo:</strong> ${b.type}</div><div><strong>Cuando:</strong> ${daysOfWeek[b.day]} - ${b.time==='morning'?'Mañana':'Noche'}</div></div>`; elements.bingoResults.appendChild(item); });
     }
     
-    function performAllAnalyses() { performThirdRowAnalysis(); analyzeHotNumbers(); displayBingoResults(); }
+    function performAllAnalyses() { performThirdRowAnalysis(); analyzeHotNumbers(); actualizarPanelOperaciones(); displayBingoResults(); }
     
-    // ====================== EVENTOS Y ARRANQUE ======================
+    // ========== EVENTOS Y ARRANQUE ==========
     function setupEventListeners() {
         elements.saveTiroBtn.addEventListener('click', saveTiro);
         elements.clearBtn.addEventListener('click', clearAllData);
@@ -507,10 +751,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 elements.numberAnalysis.classList.remove('active');
                 elements.thirdRowAnalysis.classList.remove('active');
                 elements.hotNumbersAnalysis.classList.remove('active');
+                elements.operacionesAnalysis.classList.remove('active');
                 elements.bingoAnalysis.classList.remove('active');
                 if(id==='number') elements.numberAnalysis.classList.add('active');
                 else if(id==='third-row') elements.thirdRowAnalysis.classList.add('active');
                 else if(id==='hot-numbers') elements.hotNumbersAnalysis.classList.add('active');
+                else if(id==='operaciones') elements.operacionesAnalysis.classList.add('active');
                 else if(id==='bingo') elements.bingoAnalysis.classList.add('active');
             });
         });
