@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Lotería Pro - Análisis Avanzado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <div class="container">
+        <!-- Header con botón de tema -->
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="flex:1; text-align:left;">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div style="flex:1; text-align:center;">
+                    <h1><i class="fas fa-ticket-alt"></i> Sistema de Lotería Pro</h1>
+                    <p class="subtitle">Análisis Avanzado con Inteligencia Predictiva</p>
+                </div>
+                <div style="flex:1;"></div>
+            </div>
+            <div class="badge-container">
+                <div class="badge"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
+                <div class="badge"><i class="fas fa-fire"></i> Números Calientes</div>
+                <div class="badge"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
+                <div class="badge"><i class="fas fa-trophy"></i> Sistema BINGO</div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Columna izquierda -->
+            <div class="left-column">
+                <!-- Registrar -->
+                <div class="card">
+                    <h2><i class="fas fa-plus-circle"></i> Registrar Nuevo Tiro</h2>
+                    <div class="form-group">
+                        <label for="weekSelect"><i class="fas fa-calendar-week"></i> Semana</label>
+                        <select id="weekSelect">
+                            <option value="1">Semana 1</option>
+                            <option value="2">Semana 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="daySelect"><i class="fas fa-calendar-day"></i> Día</label>
+                        <select id="daySelect">
+                            <option value="0">Domingo</option>
+                            <option value="1">Lunes</option>
+                            <option value="2">Martes</option>
+                            <option value="3">Miércoles</option>
+                            <option value="4">Jueves</option>
+                            <option value="5">Viernes</option>
+                            <option value="6">Sábado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeSelect"><i class="fas fa-clock"></i> Horario</label>
+                        <select id="timeSelect">
+                            <option value="morning">🌅 Mañana</option>
+                            <option value="evening">🌙 Noche</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-hashtag"></i> Número (00-99)</label>
+                        <div class="number-input-row">
+                            <div class="single-number-input">
+                                <input type="number" id="tiroNumber" min="0" max="99" placeholder="00">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="saveTiroBtn" class="btn"><i class="fas fa-save"></i> Guardar Tiro</button>
+                </div>
+
+                <!-- Últimos números -->
+                <div class="card">
+                    <h2><i class="fas fa-history"></i> Últimos Números</h2>
+                    <div id="recentNumbers" class="recent-numbers-container">
+                        <div class="empty-recent">No hay números registrados aún</div>
+                    </div>
+                    <div class="logic-section">
+                        <h3><i class="fas fa-robot"></i> Acciones Rápidas</h3>
+                        <div class="logic-controls">
+                            <button id="refreshBtn" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Actualizar Análisis</button>
+                            <button id="clearBtn" class="btn btn-clear"><i class="fas fa-trash-alt"></i> Limpiar Datos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="right-column">
+                <!-- Tabs -->
+                <div class="analysis-tabs-container">
+                    <div class="analysis-tabs">
+                        <div class="analysis-tab active" data-tab="number"><i class="fas fa-calendar-alt"></i> Registro Semanal</div>
+                        <div class="analysis-tab" data-tab="third-row"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
+                        <div class="analysis-tab" data-tab="hot-numbers"><i class="fas fa-fire"></i> Números Calientes</div>
+                        <div class="analysis-tab" data-tab="operaciones"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
+                        <div class="analysis-tab" data-tab="bingo"><i class="fas fa-trophy"></i> BINGO</div>
+                    </div>
+                </div>
+
+                <!-- Contenido tabs -->
+                <div id="numberAnalysis" class="analysis-content active">
+                    <div class="card">
+                        <h2><i class="fas fa-calendar-alt"></i> Registro Semanal</h2>
+                        <div class="week-selector">
+                            <button id="week1Btn" class="week-btn active"><i class="fas fa-chevron-left"></i> Semana 1</button>
+                            <div class="week-title" id="weekTitle">Semana 1</div>
+                            <button id="week2Btn" class="week-btn">Semana 2 <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div id="daysContainer" class="days-grid"></div>
+                    </div>
+                </div>
+
+                <div id="thirdRowAnalysis" class="analysis-content">
+                    <div class="card">
+                        <h2><i class="fas fa-bolt"></i> Análisis de Terceras Filas</h2>
+                        <div id="analysisResults" class="results-container">
+                            <div class="empty-results"><i class="fas fa-chart-bar"></i><p>Registra números para ver el análisis predictivo</p></div>
+                        </div>
+                        <div id="statsBox" class="stats-box" style="display: none;">
+                            <h5><i class="fas fa-chart-pie"></i> Estadísticas</h5>
+                            <div class="stats-row"><span class="stat-label">Números analizados:</span><span id="statNumbersCount" class="stat-value">0</span></div>
+                            <div class="stats-row"><span class="stat-label">Terceras filas arriba:</span><span id="statUpCount" class="stat-value">0</span></div>
+                            <div class="stats-row"><span class="stat-label">Terceras filas abajo:</span><span id="statDownCount" class="stat-value">0</span></div>
+                            <div class="stats-row"><span class="stat-label">Total únicos:</span><span id="statTotalUnique" class="stat-value">0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hotNumbersAnalysis" class="analysis-content">
+                    <div class="hot-numbers-section">
+                        <h2><i class="fas fa-fire"></i> Tabla 11x11 - Números Calientes</h2>
+                        <div class="hot-table-container"><table id="hotTable" class="hot-table"></table></div>
+                        <div id="hotAnalysisResults" class="hot-results"><div class="empty-results"><i class="fas fa-search"></i><p>Analiza los últimos números para detectar patrones calientes</p></div></div>
+                        <div id="hotStats" class="hot-stats" style="display: none;">
+                            <div class="hot-stat"><i class="fas fa-chart-line"></i><div class="hot-stat-value" id="hotLinesFound">0</div><div class="hot-stat-label">Líneas</div></div>
+                            <div class="hot-stat"><i class="fas fa-star"></i><div class="hot-stat-value" id="hotNumbersRecommended">0</div><div class="hot-stat-label">Recomendados</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="operacionesAnalysis" class="analysis-content">
+                    <div class="card">
+                        <h2><i class="fas fa-plus-minus"></i> Predicciones por Suma / Resta</h2>
+                        <div id="operacionesResults" class="results-container"><div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver las operaciones de suma y resta</p></div></div>
+                        <div id="operacionesStats" class="stats-box" style="display: none;"><h5><i class="fas fa-chart-line"></i> Historial de aciertos</h5><div id="aciertosList" style="max-height: 200px; overflow-y: auto;"></div></div>
+                    </div>
+                </div>
+
+                <div id="bingoAnalysis" class="analysis-content">
+                    <div class="bingo-section">
+                        <h2><i class="fas fa-trophy"></i> ¡BINGO! Resultados</h2>
+                        <div id="bingoResults"><div class="empty-results"><i class="fas fa-trophy"></i><p>No hay BINGOS aún</p></div></div>
+                        <div id="bingoStats" class="bingo-stats" style="display: none;">
+                            <div class="bingo-stat"><i class="fas fa-trophy"></i><div class="bingo-stat-value" id="bingoTotal">0</div><div class="bingo-stat-label">Total</div></div>
+                            <div class="bingo-stat"><i class="fas fa-calendar-week"></i><div class="bingo-stat-value" id="bingoWeek">0</div><div class="bingo-stat-label">Esta semana</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> Cómo usar</h3>
+            <ol>
+                <li><strong>Registra números</strong> (solo uno por día/horario).</li>
+                <li><strong>Terceras Filas:</strong> analiza últimos 4 números y sugiere patrones.</li>
+                <li><strong>Números Calientes:</strong> detecta líneas en tabla 11x11.</li>
+                <li><strong>Sumas / Restas:</strong> Aplica operaciones fijas a los últimos números y muestra predicciones. Si acierta, se notifica.</li>
+                <li><strong>BINGO:</strong> aciertos automáticos de terceras filas.</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p><i class="fas fa-heart"></i> Sistema de Lotería Pro - Análisis Avanzado</p>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Éxito</span></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
