@@ -1,44 +1,58 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Lotería Pro - Análisis Avanzado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Partículas de fondo -->
+
+    <!-- ===== PRELOADER ===== -->
+    <div id="preloader">
+        <div class="preloader-container">
+            <div class="lottery-ball">
+                <div class="ball-number">100</div>
+                <div class="ball-shine"></div>
+                <div class="ball-shadow"></div>
+            </div>
+            <div class="preloader-text">
+                <span class="text-loading">Mejorando la experiencia del usuario </span>
+                <span class="text-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <div class="bg-animation" id="bgAnimation"></div>
 
     <div class="container">
-        <!-- Header con botón de tema -->
         <header>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="flex:1; text-align:left;">
-                    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
+            <div style="display:flex; align-items:center; gap:1rem; position:relative;">
+                <button id="themeToggle" class="btn-theme" title="Cambiar modo">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <div style="flex:1; text-align:center;">
                     <h1><i class="fas fa-ticket-alt"></i> Sistema de Lotería Pro</h1>
                     <p class="subtitle">Análisis Avanzado con Inteligencia Predictiva</p>
                 </div>
-                <div style="flex:1;"></div>
+                <div style="width:44px;"></div>
             </div>
             <div class="badge-container">
                 <div class="badge"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
                 <div class="badge"><i class="fas fa-fire"></i> Números Calientes</div>
                 <div class="badge"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
+                <div class="badge"><i class="fas fa-arrows-split-up-and-left"></i> Decenas / Terminales</div>
                 <div class="badge"><i class="fas fa-trophy"></i> Sistema BINGO</div>
             </div>
         </header>
 
         <div class="main-content">
-            <!-- Columna izquierda -->
             <div class="left-column">
-                <!-- Registrar -->
                 <div class="card">
                     <h2><i class="fas fa-plus-circle"></i> Registrar Nuevo Tiro</h2>
                     <div class="form-group">
@@ -78,8 +92,7 @@
                     <button id="saveTiroBtn" class="btn"><i class="fas fa-save"></i> Guardar Tiro</button>
                 </div>
 
-                <!-- Últimos números -->
-                <div class="card">
+                <div class="card" style="margin-top:1.5rem;">
                     <h2><i class="fas fa-history"></i> Últimos Números</h2>
                     <div id="recentNumbers" class="recent-numbers-container">
                         <div class="empty-recent">No hay números registrados aún</div>
@@ -94,20 +107,19 @@
                 </div>
             </div>
 
-            <!-- Columna derecha -->
             <div class="right-column">
-                <!-- Tabs -->
                 <div class="analysis-tabs-container">
                     <div class="analysis-tabs">
                         <div class="analysis-tab active" data-tab="number"><i class="fas fa-calendar-alt"></i> Registro Semanal</div>
                         <div class="analysis-tab" data-tab="third-row"><i class="fas fa-arrows-alt-v"></i> Terceras Filas</div>
                         <div class="analysis-tab" data-tab="hot-numbers"><i class="fas fa-fire"></i> Números Calientes</div>
                         <div class="analysis-tab" data-tab="operaciones"><i class="fas fa-plus-minus"></i> Sumas / Restas</div>
+                        <div class="analysis-tab" data-tab="decenas"><i class="fas fa-arrows-split-up-and-left"></i> Decenas / Terminales</div>
+                        <div class="analysis-tab" data-tab="pronosticos"><i class="fas fa-chart-line"></i> 📊 Pronósticos</div>
                         <div class="analysis-tab" data-tab="bingo"><i class="fas fa-trophy"></i> BINGO</div>
                     </div>
                 </div>
 
-                <!-- Contenido tabs -->
                 <div id="numberAnalysis" class="analysis-content active">
                     <div class="card">
                         <h2><i class="fas fa-calendar-alt"></i> Registro Semanal</h2>
@@ -126,7 +138,7 @@
                         <div id="analysisResults" class="results-container">
                             <div class="empty-results"><i class="fas fa-chart-bar"></i><p>Registra números para ver el análisis predictivo</p></div>
                         </div>
-                        <div id="statsBox" class="stats-box" style="display: none;">
+                        <div id="statsBox" class="stats-box" style="display:none;">
                             <h5><i class="fas fa-chart-pie"></i> Estadísticas</h5>
                             <div class="stats-row"><span class="stat-label">Números analizados:</span><span id="statNumbersCount" class="stat-value">0</span></div>
                             <div class="stats-row"><span class="stat-label">Terceras filas arriba:</span><span id="statUpCount" class="stat-value">0</span></div>
@@ -139,9 +151,13 @@
                 <div id="hotNumbersAnalysis" class="analysis-content">
                     <div class="hot-numbers-section">
                         <h2><i class="fas fa-fire"></i> Tabla 11x11 - Números Calientes</h2>
-                        <div class="hot-table-container"><table id="hotTable" class="hot-table"></table></div>
-                        <div id="hotAnalysisResults" class="hot-results"><div class="empty-results"><i class="fas fa-search"></i><p>Analiza los últimos números para detectar patrones calientes</p></div></div>
-                        <div id="hotStats" class="hot-stats" style="display: none;">
+                        <div class="hot-table-container">
+                            <table id="hotTable" class="hot-table"></table>
+                        </div>
+                        <div id="hotResultsContainer" class="hot-results">
+                            <div class="empty-results"><i class="fas fa-search"></i><p>Analiza los últimos números para detectar patrones calientes</p></div>
+                        </div>
+                        <div id="hotStats" class="hot-stats" style="display:none;">
                             <div class="hot-stat"><i class="fas fa-chart-line"></i><div class="hot-stat-value" id="hotLinesFound">0</div><div class="hot-stat-label">Líneas</div></div>
                             <div class="hot-stat"><i class="fas fa-star"></i><div class="hot-stat-value" id="hotNumbersRecommended">0</div><div class="hot-stat-label">Recomendados</div></div>
                         </div>
@@ -151,8 +167,45 @@
                 <div id="operacionesAnalysis" class="analysis-content">
                     <div class="card">
                         <h2><i class="fas fa-plus-minus"></i> Predicciones por Suma / Resta</h2>
-                        <div id="operacionesResults" class="results-container"><div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver las operaciones de suma y resta</p></div></div>
-                        <div id="operacionesStats" class="stats-box" style="display: none;"><h5><i class="fas fa-chart-line"></i> Historial de aciertos</h5><div id="aciertosList" style="max-height: 200px; overflow-y: auto;"></div></div>
+                        <div id="operacionesResults" class="results-container">
+                            <div class="empty-results"><i class="fas fa-calculator"></i><p>Registra números para ver las operaciones de suma y resta</p></div>
+                        </div>
+                        <div id="operacionesStats" class="stats-box" style="display:none;">
+                            <h5><i class="fas fa-chart-line"></i> Historial de aciertos</h5>
+                            <div id="aciertosList" style="max-height:200px; overflow-y:auto;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="decenasAnalysis" class="analysis-content">
+                    <div class="card">
+                        <h2><i class="fas fa-arrows-split-up-and-left"></i> Análisis de Decenas y Terminales</h2>
+                        <div id="decenasResults" class="results-container">
+                            <div class="empty-results"><i class="fas fa-chart-bar"></i><p>Registra números para ver el análisis de decenas y terminales</p></div>
+                        </div>
+                        <div id="decenasStats" class="stats-box" style="display:none;">
+                            <h5><i class="fas fa-chart-pie"></i> Predicciones basadas en el último número</h5>
+                            <div id="decenasContent"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PRONÓSTICOS ===== -->
+                <div id="pronosticosAnalysis" class="analysis-content">
+                    <div class="pronosticos-section">
+                        <h2><i class="fas fa-chart-line"></i> 📊 Pronósticos Inteligentes</h2>
+                        <p style="color:var(--text-color-secondary);font-size:0.9rem;margin-bottom:20px;">
+                            <i class="fas fa-robot" style="color:var(--primary);"></i> 
+                            Análisis combinado de todas las fuentes para generar los números con mayor probabilidad
+                        </p>
+                        <div id="pronosticosResults" class="pronosticos-container">
+                            <div class="empty-results"><i class="fas fa-chart-line"></i><p>Registra números para generar pronósticos</p></div>
+                        </div>
+                        <div id="pronosticosStats" class="pronosticos-stats" style="display:none;">
+                            <div class="pronostico-stat"><i class="fas fa-star"></i><div class="pronostico-stat-value" id="pronosticoTotal">0</div><div class="pronostico-stat-label">Total sugerencias</div></div>
+                            <div class="pronostico-stat"><i class="fas fa-fire"></i><div class="pronostico-stat-value" id="pronosticoCalientes">0</div><div class="pronostico-stat-label">Coincidencias fuertes</div></div>
+                            <div class="pronostico-stat"><i class="fas fa-bolt"></i><div class="pronostico-stat-value" id="pronosticoConfianza">0%</div><div class="pronostico-stat-label">Confianza</div></div>
+                        </div>
                     </div>
                 </div>
 
@@ -160,7 +213,7 @@
                     <div class="bingo-section">
                         <h2><i class="fas fa-trophy"></i> ¡BINGO! Resultados</h2>
                         <div id="bingoResults"><div class="empty-results"><i class="fas fa-trophy"></i><p>No hay BINGOS aún</p></div></div>
-                        <div id="bingoStats" class="bingo-stats" style="display: none;">
+                        <div id="bingoStats" class="bingo-stats" style="display:none;">
                             <div class="bingo-stat"><i class="fas fa-trophy"></i><div class="bingo-stat-value" id="bingoTotal">0</div><div class="bingo-stat-label">Total</div></div>
                             <div class="bingo-stat"><i class="fas fa-calendar-week"></i><div class="bingo-stat-value" id="bingoWeek">0</div><div class="bingo-stat-label">Esta semana</div></div>
                         </div>
@@ -169,24 +222,31 @@
             </div>
         </div>
 
-        <!-- Instrucciones -->
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Cómo usar</h3>
             <ol>
-                <li><strong>Registra números</strong> (solo uno por día/horario).</li>
+                <li><strong>Registra números</strong> (solo uno por día y horario).</li>
                 <li><strong>Terceras Filas:</strong> analiza últimos 4 números y sugiere patrones.</li>
-                <li><strong>Números Calientes:</strong> detecta líneas en tabla 11x11.</li>
-                <li><strong>Sumas / Restas:</strong> Aplica operaciones fijas a los últimos números y muestra predicciones. Si acierta, se notifica.</li>
-                <li><strong>BINGO:</strong> aciertos automáticos de terceras filas.</li>
+                <li><strong>Números Calientes:</strong> haz clic en una línea para verla resaltada en la tabla 11x11 con su color único.</li>
+                <li><strong>Sumas / Restas:</strong> aplica operaciones fijas y notifica aciertos.</li>
+                <li><strong>Decenas / Terminales:</strong> basado en el último número, muestra posibles decenas y terminales.</li>
+                <li><strong>Pronósticos:</strong> análisis combinado de todas las fuentes para generar números con mayor probabilidad.</li>
+                <li><strong>BINGO:</strong> aciertos automáticos desde terceras filas.</li>
             </ol>
         </div>
 
         <div class="footer">
-            <p><i class="fas fa-heart"></i> Sistema de Lotería Pro - Análisis Avanzado</p>
+            <p>
+                <i class="fas fa-heart" style="color:var(--danger);"></i>
+                Sistema de Lotería Pro - Análisis Avanzado
+                <span style="margin-left:2rem; opacity:0.6;">
+                    <i class="fas fa-users"></i>
+                    Visitantes únicos: <strong id="visitorCounter">0</strong>
+                </span>
+            </p>
         </div>
     </div>
 
-    <!-- Toast -->
     <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Éxito</span></div>
 
     <script src="script.js"></script>
